@@ -54,7 +54,7 @@ export default function Footer() {
             <h4 className="font-semibold text-sm text-secondary uppercase tracking-wider mb-4">Connect</h4>
             <div className="space-y-2">
               <a
-                href="https://github.com/prabaltripathi"
+                href="https://github.com/prabaltripathiofficial"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted hover:text-primary text-sm transition-colors"
