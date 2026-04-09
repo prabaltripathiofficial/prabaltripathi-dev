@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
-const MONGODB_URI = "mongodb://localhost:27017/prabal-dev";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/prabal-dev";
 
 async function seed() {
   await mongoose.connect(MONGODB_URI);
