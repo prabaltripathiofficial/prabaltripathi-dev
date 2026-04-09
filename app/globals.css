@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: #0a0a0f;
+    --foreground: #fafafa;
+    --card: #111118;
+    --card-hover: #16161f;
+    --border: #1e1e2e;
+    --border-hover: #2e2e3e;
+    --brand: #6366f1;
+    --brand-light: #818cf8;
+    --muted: #71717a;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgb(99 102 241 / 0.3);
+    color: white;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-[#111118]/80 backdrop-blur-xl border border-white/[0.06] rounded-2xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card hover:border-white/[0.12] hover:bg-[#16161f]/80 transition-all duration-300;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+  }
+
+  .gradient-border {
+    @apply relative;
+    background: linear-gradient(var(--card), var(--card)) padding-box,
+                linear-gradient(135deg, #6366f1, #a855f7, #ec4899) border-box;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+  }
+
+  .glow-effect {
+    box-shadow: 0 0 20px rgb(99 102 241 / 0.15),
+                0 0 40px rgb(99 102 241 / 0.05);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-medium rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-brand-600/25 active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/[0.05] hover:bg-white/[0.1] text-white font-medium rounded-xl border border-white/[0.08] hover:border-white/[0.15] transition-all duration-200 active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 hover:bg-white/[0.05] text-zinc-400 hover:text-white font-medium rounded-lg transition-all duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-white/[0.03] border border-white/[0.08] rounded-xl text-white placeholder:text-zinc-500 focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/25 transition-all duration-200;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+
+  .section-subheading {
+    @apply text-zinc-400 text-lg mt-3 max-w-2xl;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(99 102 241 / 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(99 102 241 / 0.5);
+  }
+
+  /* Markdown content styles */
+  .prose-custom h1 {
+    @apply text-3xl font-bold text-white mt-8 mb-4;
+  }
+  .prose-custom h2 {
+    @apply text-2xl font-bold text-white mt-8 mb-3;
+  }
+  .prose-custom h3 {
+    @apply text-xl font-semibold text-white mt-6 mb-2;
+  }
+  .prose-custom p {
+    @apply text-zinc-300 leading-relaxed mb-4;
+  }
+  .prose-custom a {
+    @apply text-brand-400 hover:text-brand-300 underline underline-offset-2;
+  }
+  .prose-custom ul, .prose-custom ol {
+    @apply text-zinc-300 ml-6 mb-4 space-y-1;
+  }
+  .prose-custom ul {
+    @apply list-disc;
+  }
+  .prose-custom ol {
+    @apply list-decimal;
+  }
+  .prose-custom li {
+    @apply leading-relaxed;
+  }
+  .prose-custom blockquote {
+    @apply border-l-4 border-brand-500 pl-4 my-4 text-zinc-400 italic;
+  }
+  .prose-custom code {
+    @apply bg-white/[0.06] text-brand-300 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+  .prose-custom pre {
+    @apply bg-[#0d0d14] border border-white/[0.06] rounded-xl p-4 my-4 overflow-x-auto;
+  }
+  .prose-custom pre code {
+    @apply bg-transparent text-zinc-300 px-0 py-0;
+  }
+  .prose-custom img {
+    @apply rounded-xl my-6 max-w-full;
+  }
+  .prose-custom hr {
+    @apply border-white/[0.08] my-8;
+  }
+  .prose-custom strong {
+    @apply text-white font-semibold;
+  }
+  .prose-custom em {
+    @apply text-zinc-400;
+  }
+
+  /* TipTap Medium Editor */
+  .medium-editor-wrapper {
+    @apply relative;
+  }
+
+  .medium-editor-content {
+    @apply min-h-[500px] outline-none;
+  }
+
+  .medium-editor-content .tiptap {
+    @apply min-h-[500px] outline-none;
+  }
+
+  .medium-editor-content .tiptap > * + * {
+    margin-top: 0.75em;
+  }
+
+  .medium-editor-content .tiptap p {
+    @apply text-zinc-200 text-lg leading-relaxed;
+  }
+
+  .medium-editor-content .tiptap h1 {
+    @apply text-3xl font-bold text-white mt-10 mb-4;
+  }
+
+  .medium-editor-content .tiptap h2 {
+    @apply text-2xl font-bold text-white mt-8 mb-3;
+  }
+
+  .medium-editor-content .tiptap h3 {
+    @apply text-xl font-semibold text-white mt-6 mb-2;
+  }
+
+  .medium-editor-content .tiptap strong {
+    @apply text-white font-semibold;
+  }
+
+  .medium-editor-content .tiptap em {
+    @apply italic text-zinc-300;
+  }
+
+  .medium-editor-content .tiptap u {
+    @apply underline underline-offset-2;
+  }
+
+  .medium-editor-content .tiptap s {
+    @apply line-through text-zinc-500;
+  }
+
+  .medium-editor-content .tiptap a {
+    @apply text-brand-400 underline underline-offset-2 cursor-pointer;
+  }
+
+  .medium-editor-content .tiptap ul {
+    @apply list-disc ml-6 text-zinc-300;
+  }
+
+  .medium-editor-content .tiptap ol {
+    @apply list-decimal ml-6 text-zinc-300;
+  }
+
+  .medium-editor-content .tiptap li {
+    @apply leading-relaxed;
+  }
+
+  .medium-editor-content .tiptap li p {
+    @apply m-0;
+  }
+
+  .medium-editor-content .tiptap blockquote {
+    @apply border-l-4 border-brand-500 pl-4 my-4 text-zinc-400 italic;
+  }
+
+  .medium-editor-content .tiptap code {
+    @apply bg-white/[0.06] text-brand-300 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  .medium-editor-content .tiptap pre {
+    @apply bg-[#0d0d14] border border-white/[0.06] rounded-xl p-4 my-4 overflow-x-auto;
+  }
+
+  .medium-editor-content .tiptap pre code {
+    @apply bg-transparent text-zinc-300 px-0 py-0 text-sm;
+  }
+
+  .medium-editor-content .tiptap img {
+    @apply rounded-xl my-6 max-w-full mx-auto;
+  }
+
+  .medium-editor-content .tiptap hr {
+    @apply border-white/[0.08] my-8;
+  }
+
+  .medium-editor-content .tiptap mark {
+    @apply bg-yellow-500/20 text-yellow-200 px-0.5 rounded;
+  }
+
+  .medium-editor-content .tiptap p.is-editor-empty:first-child::before {
+    @apply text-zinc-600 float-left pointer-events-none h-0;
+    content: attr(data-placeholder);
+  }
+
+  /* Noise texture overlay */
+  .noise-bg::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.015;
+    z-index: 100;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+}
