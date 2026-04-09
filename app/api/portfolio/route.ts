@@ -27,16 +27,18 @@ export async function PUT(req: NextRequest) {
     await connectDB();
     const body = await req.json();
 
-    let portfolio = await Portfolio.findOne();
-    if (portfolio) {
-      Object.assign(portfolio, body);
-      await portfolio.save();
-    } else {
-      portfolio = await Portfolio.create(body);
-    }
+    // Strip immutable/internal fields
+    const { _id, __v, createdAt, updatedAt, ...updateData } = body;
+
+    const portfolio = await Portfolio.findOneAndUpdate(
+      {},
+      { $set: updateData },
+      { new: true, upsert: true, runValidators: false }
+    );
 
     return NextResponse.json(portfolio);
   } catch (error: any) {
+    console.error("Portfolio update error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
