@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
+import { connectDB } from "@/lib/db";
+import Media from "@/lib/models/Media";
 
 export async function POST(req: NextRequest) {
   try {
@@ -18,21 +18,26 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
+    // 5MB limit
+    if (file.size > 5 * 1024 * 1024) {
+      return NextResponse.json({ error: "File too large (max 5MB)" }, { status: 400 });
+    }
+
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Create uploads directory if it doesn't exist
-    const uploadDir = path.join(process.cwd(), "public", "uploads");
-    await mkdir(uploadDir, { recursive: true });
+    await connectDB();
 
-    // Generate unique filename
-    const ext = path.extname(file.name);
-    const filename = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}${ext}`;
-    const filepath = path.join(uploadDir, filename);
+    const media = await Media.create({
+      filename: file.name,
+      contentType: file.type,
+      data: buffer,
+      size: file.size,
+    });
 
-    await writeFile(filepath, buffer);
+    const url = `/api/media/${media._id}`;
 
-    return NextResponse.json({ url: `/uploads/${filename}` }, { status: 201 });
+    return NextResponse.json({ url }, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
