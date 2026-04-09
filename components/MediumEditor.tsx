@@ -145,8 +145,18 @@ export default function MediumEditor({ content, onChange }: MediumEditorProps) {
       },
     },
     onUpdate: ({ editor }) => {
-      const markdown = (editor.storage as any).markdown.getMarkdown();
-      onChange(markdown);
+      try {
+        const md = (editor.storage as any)?.markdown?.getMarkdown?.();
+        if (md && md.trim()) {
+          onChange(md);
+          return;
+        }
+      } catch {}
+      // Fallback to HTML
+      const html = editor.getHTML();
+      if (html && html !== "<p></p>") {
+        onChange(html);
+      }
     },
   });
 
