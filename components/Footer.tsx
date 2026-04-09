@@ -10,7 +10,7 @@ export default function Footer() {
   if (pathname.startsWith("/admin")) return null;
 
   return (
-    <footer className="border-t border-white/[0.06] bg-[#0a0a0f]">
+    <footer className="border-t" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}>
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
@@ -23,14 +23,14 @@ export default function Footer() {
                 prabal<span className="text-brand-400">.dev</span>
               </span>
             </Link>
-            <p className="text-zinc-500 text-sm leading-relaxed">
+            <p className="text-muted text-sm leading-relaxed">
               Building scalable systems & sharing what I learn along the way.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-sm text-zinc-300 uppercase tracking-wider mb-4">Navigate</h4>
+            <h4 className="font-semibold text-sm text-secondary uppercase tracking-wider mb-4">Navigate</h4>
             <div className="space-y-2">
               {[
                 { href: "/", label: "Home" },
@@ -41,7 +41,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block text-zinc-500 hover:text-white text-sm transition-colors"
+                  className="block text-muted hover:text-primary text-sm transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -51,13 +51,13 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="font-semibold text-sm text-zinc-300 uppercase tracking-wider mb-4">Connect</h4>
+            <h4 className="font-semibold text-sm text-secondary uppercase tracking-wider mb-4">Connect</h4>
             <div className="space-y-2">
               <a
                 href="https://github.com/prabaltripathi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-zinc-500 hover:text-white text-sm transition-colors"
+                className="flex items-center gap-2 text-muted hover:text-primary text-sm transition-colors"
               >
                 <Github className="w-4 h-4" /> GitHub
               </a>
@@ -65,13 +65,13 @@ export default function Footer() {
                 href="https://linkedin.com/in/prabaltripathiofficial"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-zinc-500 hover:text-white text-sm transition-colors"
+                className="flex items-center gap-2 text-muted hover:text-primary text-sm transition-colors"
               >
                 <Linkedin className="w-4 h-4" /> LinkedIn
               </a>
               <a
                 href="mailto:prabaltripathiofficial@gmail.com"
-                className="flex items-center gap-2 text-zinc-500 hover:text-white text-sm transition-colors"
+                className="flex items-center gap-2 text-muted hover:text-primary text-sm transition-colors"
               >
                 <Mail className="w-4 h-4" /> Email
               </a>
@@ -80,8 +80,8 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-semibold text-sm text-zinc-300 uppercase tracking-wider mb-4">Newsletter</h4>
-            <p className="text-zinc-500 text-sm mb-3">
+            <h4 className="font-semibold text-sm text-secondary uppercase tracking-wider mb-4">Newsletter</h4>
+            <p className="text-muted text-sm mb-3">
               Get notified about new articles and projects.
             </p>
             <NewsletterForm compact />
@@ -89,10 +89,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-zinc-600 text-sm">
+          <p className="text-muted text-sm">
             &copy; {new Date().getFullYear()} Prabal Tripathi. All rights reserved.
           </p>
-          <p className="text-zinc-600 text-sm flex items-center gap-1">
+          <p className="text-muted text-sm flex items-center gap-1">
             Built with <Heart className="w-3 h-3 text-red-500 fill-red-500" /> using Next.js
           </p>
         </div>

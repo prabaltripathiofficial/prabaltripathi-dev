@@ -50,7 +50,7 @@ export default async function BlogPage({
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             Blog
           </h1>
-          <p className="text-zinc-400 text-lg">
+          <p className="text-secondary text-lg">
             Thoughts on engineering, system design, and the tools I build.
           </p>
         </section>
@@ -59,7 +59,7 @@ export default async function BlogPage({
         <section className="mb-10">
           <form action="/blog" method="GET" className="mb-6">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
               <input
                 type="text"
                 name="search"
@@ -76,8 +76,8 @@ export default async function BlogPage({
                 href="/blog"
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
                   !searchParams.tag
-                    ? "bg-brand-600 text-white"
-                    : "bg-white/[0.04] text-zinc-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.06]"
+                    ? "bg-brand-600 text-primary"
+                    : "bg-white/[0.04] text-secondary hover:text-primary hover:bg-white/[0.08] border border-white/[0.06]"
                 }`}
               >
                 All
@@ -88,8 +88,8 @@ export default async function BlogPage({
                   href={`/blog?tag=${encodeURIComponent(tag)}`}
                   className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
                     searchParams.tag === tag
-                      ? "bg-brand-600 text-white"
-                      : "bg-white/[0.04] text-zinc-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.06]"
+                      ? "bg-brand-600 text-primary"
+                      : "bg-white/[0.04] text-secondary hover:text-primary hover:bg-white/[0.08] border border-white/[0.06]"
                   }`}
                 >
                   {tag}
@@ -102,7 +102,7 @@ export default async function BlogPage({
         {/* Posts */}
         {posts.length === 0 ? (
           <div className="glass-card p-12 text-center">
-            <p className="text-zinc-400 text-lg mb-2">No articles found</p>
+            <p className="text-secondary text-lg mb-2">No articles found</p>
             <p className="text-zinc-600 text-sm">
               {searchParams.search || searchParams.tag
                 ? "Try a different search term or filter."
@@ -129,7 +129,7 @@ export default async function BlogPage({
                   )}
 
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 text-xs text-zinc-500 mb-2">
+                    <div className="flex items-center gap-3 text-xs text-muted mb-2">
                       {post.publishedAt && (
                         <time>
                           {new Date(post.publishedAt).toLocaleDateString("en-US", {
@@ -149,11 +149,11 @@ export default async function BlogPage({
                       </span>
                     </div>
 
-                    <h2 className="text-xl font-bold text-white group-hover:text-brand-400 transition-colors mb-2 line-clamp-1">
+                    <h2 className="text-xl font-bold text-primary group-hover:text-brand-400 transition-colors mb-2 line-clamp-1">
                       {post.title}
                     </h2>
 
-                    <p className="text-zinc-500 text-sm leading-relaxed line-clamp-2 mb-3">
+                    <p className="text-muted text-sm leading-relaxed line-clamp-2 mb-3">
                       {post.excerpt}
                     </p>
 
@@ -161,7 +161,7 @@ export default async function BlogPage({
                       {post.tags?.map((tag: string) => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 bg-white/[0.04] text-zinc-500 text-xs rounded-md"
+                          className="px-2 py-0.5 bg-white/[0.04] text-muted text-xs rounded-md"
                         >
                           {tag}
                         </span>
@@ -177,7 +177,7 @@ export default async function BlogPage({
         {/* Newsletter */}
         <section className="mt-16 glass-card p-8 text-center">
           <h2 className="text-2xl font-bold mb-2">Subscribe to my Newsletter</h2>
-          <p className="text-zinc-400 mb-6 max-w-md mx-auto">
+          <p className="text-secondary mb-6 max-w-md mx-auto">
             Get notified when I publish new articles. No spam, unsubscribe anytime.
           </p>
           <div className="max-w-sm mx-auto">

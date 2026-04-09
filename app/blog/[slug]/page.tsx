@@ -64,7 +64,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <div className="min-h-screen flex items-center justify-center pt-16">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">404</h1>
-          <p className="text-zinc-400 mb-6">This article doesn&apos;t exist.</p>
+          <p className="text-secondary mb-6">This article doesn&apos;t exist.</p>
           <Link href="/blog" className="btn-primary">
             <ArrowLeft className="w-4 h-4" /> Back to Blog
           </Link>
@@ -81,7 +81,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         {/* Back link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-zinc-500 hover:text-white text-sm transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-muted hover:text-primary text-sm transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Blog
         </Link>
@@ -104,11 +104,11 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             {post.title}
           </h1>
 
-          <p className="text-lg text-zinc-400 leading-relaxed mb-6">
+          <p className="text-lg text-secondary leading-relaxed mb-6">
             {post.excerpt}
           </p>
 
-          <div className="flex items-center gap-6 text-sm text-zinc-500 pb-8 border-b border-white/[0.06]">
+          <div className="flex items-center gap-6 text-sm text-muted pb-8 border-b border-white/[0.06]">
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
               {post.publishedAt
@@ -149,14 +149,14 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         {/* Share */}
         <div className="py-6 border-t border-b border-white/[0.06] mb-12">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-zinc-500">Enjoyed this article?</span>
+            <span className="text-sm text-muted">Enjoyed this article?</span>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-zinc-500 mr-2">Share:</span>
+              <span className="text-sm text-muted mr-2">Share:</span>
               <a
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://prabal.dev/blog/${post.slug}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-all text-xs"
+                className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-secondary hover:text-primary hover:bg-white/[0.08] transition-all text-xs"
               >
                 X
               </a>
@@ -164,7 +164,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://prabal.dev/blog/${post.slug}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-all text-xs"
+                className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-secondary hover:text-primary hover:bg-white/[0.08] transition-all text-xs"
               >
                 in
               </a>
@@ -175,7 +175,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         {/* Newsletter CTA */}
         <div className="glass-card p-8 text-center mb-12">
           <h3 className="text-xl font-bold mb-2">Enjoyed this read?</h3>
-          <p className="text-zinc-400 text-sm mb-4">Subscribe to get notified about new articles.</p>
+          <p className="text-secondary text-sm mb-4">Subscribe to get notified about new articles.</p>
           <div className="max-w-sm mx-auto">
             <NewsletterForm compact />
           </div>
@@ -195,10 +195,10 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                   href={`/blog/${r.slug}`}
                   className="glass-card-hover p-5 group"
                 >
-                  <h4 className="font-semibold text-white group-hover:text-brand-400 transition-colors text-sm line-clamp-2 mb-2">
+                  <h4 className="font-semibold text-primary group-hover:text-brand-400 transition-colors text-sm line-clamp-2 mb-2">
                     {r.title}
                   </h4>
-                  <p className="text-zinc-500 text-xs line-clamp-2">{r.excerpt}</p>
+                  <p className="text-muted text-xs line-clamp-2">{r.excerpt}</p>
                 </Link>
               ))}
             </div>

@@ -57,7 +57,7 @@ export default function SponsorPage() {
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             Sponsor My Work
           </h1>
-          <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
             I build open-source tools, write engineering articles, and mentor developers.
             Your sponsorship helps me dedicate more time to creating quality content
             and contributing to the community.
@@ -76,26 +76,26 @@ export default function SponsorPage() {
                 }`}
               >
                 {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-brand-600 text-white text-xs font-medium rounded-full">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-brand-600 text-primary text-xs font-medium rounded-full">
                     Most Popular
                   </div>
                 )}
 
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tier.color} flex items-center justify-center mb-4`}>
-                  <Icon className="w-6 h-6 text-white" />
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-1">{tier.name}</h3>
+                <h3 className="text-xl font-bold text-primary mb-1">{tier.name}</h3>
                 <div className="text-3xl font-bold gradient-text mb-2">
                   {tier.amount}
-                  <span className="text-sm text-zinc-500 font-normal">/month</span>
+                  <span className="text-sm text-muted font-normal">/month</span>
                 </div>
 
-                <p className="text-zinc-400 text-sm mb-6">{tier.description}</p>
+                <p className="text-secondary text-sm mb-6">{tier.description}</p>
 
                 <ul className="space-y-2 mb-6 flex-1">
                   {tier.perks.map((perk) => (
-                    <li key={perk} className="flex items-center gap-2 text-sm text-zinc-300">
+                    <li key={perk} className="flex items-center gap-2 text-sm text-secondary">
                       <Zap className="w-3 h-3 text-brand-400 flex-shrink-0" />
                       {perk}
                     </li>
@@ -117,7 +117,7 @@ export default function SponsorPage() {
         {/* Other ways to support */}
         <section className="glass-card p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Other Ways to Support</h2>
-          <p className="text-zinc-400 mb-8 max-w-lg mx-auto">
+          <p className="text-secondary mb-8 max-w-lg mx-auto">
             Not ready for a monthly commitment? There are other ways to show your support.
           </p>
 
@@ -128,9 +128,9 @@ export default function SponsorPage() {
               rel="noopener noreferrer"
               className="glass-card-hover p-4 flex flex-col items-center gap-2 text-center"
             >
-              <Github className="w-6 h-6 text-zinc-300" />
+              <Github className="w-6 h-6 text-secondary" />
               <span className="font-medium text-sm">Star my repos</span>
-              <span className="text-xs text-zinc-500">on GitHub</span>
+              <span className="text-xs text-muted">on GitHub</span>
             </a>
 
             <a
@@ -139,18 +139,18 @@ export default function SponsorPage() {
               rel="noopener noreferrer"
               className="glass-card-hover p-4 flex flex-col items-center gap-2 text-center"
             >
-              <Star className="w-6 h-6 text-zinc-300" />
+              <Star className="w-6 h-6 text-secondary" />
               <span className="font-medium text-sm">Endorse skills</span>
-              <span className="text-xs text-zinc-500">on LinkedIn</span>
+              <span className="text-xs text-muted">on LinkedIn</span>
             </a>
 
             <a
               href="mailto:prabaltripathiofficial@gmail.com"
               className="glass-card-hover p-4 flex flex-col items-center gap-2 text-center"
             >
-              <Mail className="w-6 h-6 text-zinc-300" />
+              <Mail className="w-6 h-6 text-secondary" />
               <span className="font-medium text-sm">Send feedback</span>
-              <span className="text-xs text-zinc-500">via Email</span>
+              <span className="text-xs text-muted">via Email</span>
             </a>
           </div>
         </section>
@@ -158,7 +158,7 @@ export default function SponsorPage() {
         {/* UPI / India specific */}
         <section className="mt-8 glass-card p-8 text-center">
           <h3 className="text-lg font-bold mb-2">From India?</h3>
-          <p className="text-zinc-400 text-sm mb-4">
+          <p className="text-secondary text-sm mb-4">
             You can support me directly via UPI. Just scan or use the ID below:
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl">

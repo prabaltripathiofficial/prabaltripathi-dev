@@ -31,7 +31,7 @@ export default async function AboutPage() {
   if (!portfolio) {
     return (
       <div className="min-h-screen flex items-center justify-center pt-16">
-        <p className="text-zinc-400">Portfolio not found. Run seed first.</p>
+        <p className="text-secondary">Portfolio not found. Run seed first.</p>
       </div>
     );
   }
@@ -49,7 +49,7 @@ export default async function AboutPage() {
         <section className="mb-16">
           <div className="flex flex-col md:flex-row gap-8 items-start">
             {/* Avatar placeholder */}
-            <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-brand-500 to-purple-600 flex items-center justify-center text-4xl font-bold text-white flex-shrink-0 shadow-2xl shadow-brand-600/20">
+            <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-brand-500 to-purple-600 flex items-center justify-center text-4xl font-bold text-primary flex-shrink-0 shadow-2xl shadow-brand-600/20">
               {portfolio.name?.split(" ").map((n: string) => n[0]).join("")}
             </div>
 
@@ -59,11 +59,11 @@ export default async function AboutPage() {
               </h1>
               <p className="text-xl text-brand-400 font-medium mb-4">{portfolio.title}</p>
 
-              <div className="flex flex-wrap gap-4 text-sm text-zinc-400 mb-6">
+              <div className="flex flex-wrap gap-4 text-sm text-secondary mb-6">
                 {portfolio.location && (
                   <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4" />{portfolio.location}</span>
                 )}
-                <a href={`mailto:${portfolio.email}`} className="flex items-center gap-1.5 hover:text-white transition-colors">
+                <a href={`mailto:${portfolio.email}`} className="flex items-center gap-1.5 hover:text-primary transition-colors">
                   <Mail className="w-4 h-4" />{portfolio.email}
                 </a>
                 {portfolio.phone && (
@@ -90,7 +90,7 @@ export default async function AboutPage() {
 
           {portfolio.bio && (
             <div className="mt-8 glass-card p-6 md:p-8">
-              <p className="text-zinc-300 leading-relaxed text-lg">{portfolio.bio}</p>
+              <p className="text-secondary leading-relaxed text-lg">{portfolio.bio}</p>
             </div>
           )}
         </section>
@@ -119,7 +119,7 @@ export default async function AboutPage() {
 
                     <div className="glass-card p-6">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-                        <h3 className="text-lg font-bold text-white">{exp.role}</h3>
+                        <h3 className="text-lg font-bold text-primary">{exp.role}</h3>
                         {exp.current && (
                           <span className="px-2.5 py-0.5 bg-emerald-500/10 text-emerald-400 text-xs font-medium rounded-full border border-emerald-500/20 w-fit">
                             Current
@@ -127,11 +127,11 @@ export default async function AboutPage() {
                         )}
                       </div>
                       <p className="text-brand-400 font-medium text-sm">{exp.company}</p>
-                      <p className="text-zinc-500 text-xs mt-1">{exp.location} &middot; {exp.period}</p>
+                      <p className="text-muted text-xs mt-1">{exp.location} &middot; {exp.period}</p>
 
                       <ul className="mt-4 space-y-2">
                         {exp.description?.map((item: string, j: number) => (
-                          <li key={j} className="flex items-start gap-2 text-zinc-400 text-sm leading-relaxed">
+                          <li key={j} className="flex items-start gap-2 text-secondary text-sm leading-relaxed">
                             <ChevronRight className="w-3 h-3 text-brand-500 mt-1 flex-shrink-0" />
                             {item}
                           </li>
@@ -159,7 +159,7 @@ export default async function AboutPage() {
                   <h3 className="text-xs font-semibold text-brand-400 uppercase tracking-wider mb-3">{category}</h3>
                   <div className="flex flex-wrap gap-2">
                     {skills.map((skill: string) => (
-                      <span key={skill} className="px-2.5 py-1 bg-white/[0.04] border border-white/[0.06] rounded-md text-sm text-zinc-300">
+                      <span key={skill} className="px-2.5 py-1 bg-white/[0.04] border border-white/[0.06] rounded-md text-sm text-secondary">
                         {skill}
                       </span>
                     ))}
@@ -182,15 +182,15 @@ export default async function AboutPage() {
               {portfolio.projects.map((project: any, i: number) => (
                 <div key={i} className="glass-card-hover p-6 flex flex-col">
                   <div className="flex items-start justify-between mb-2">
-                    <h3 className="text-lg font-bold text-white">{project.title}</h3>
+                    <h3 className="text-lg font-bold text-primary">{project.title}</h3>
                     {project.githubUrl && (
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
-                        className="text-zinc-500 hover:text-white transition-colors">
+                        className="text-muted hover:text-primary transition-colors">
                         <Github className="w-4 h-4" />
                       </a>
                     )}
                   </div>
-                  <p className="text-zinc-400 text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
+                  <p className="text-secondary text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {project.techStack?.map((tech: string) => (
                       <span key={tech} className="px-2 py-0.5 bg-brand-600/10 text-brand-400 text-xs rounded-md border border-brand-500/10">
@@ -217,8 +217,8 @@ export default async function AboutPage() {
                 <div key={i} className="glass-card p-5 flex items-center gap-4">
                   <div className="text-2xl font-bold text-brand-500 w-16 flex-shrink-0 text-center">{ach.year}</div>
                   <div className="border-l border-white/[0.06] pl-4">
-                    <h3 className="font-semibold text-white">{ach.title}</h3>
-                    <p className="text-zinc-500 text-sm">{ach.description}</p>
+                    <h3 className="font-semibold text-primary">{ach.title}</h3>
+                    <p className="text-muted text-sm">{ach.description}</p>
                   </div>
                 </div>
               ))}
@@ -236,9 +236,9 @@ export default async function AboutPage() {
 
             {portfolio.education.map((edu: any, i: number) => (
               <div key={i} className="glass-card p-6">
-                <h3 className="text-lg font-bold text-white">{edu.institution}</h3>
+                <h3 className="text-lg font-bold text-primary">{edu.institution}</h3>
                 <p className="text-brand-400 font-medium text-sm mt-1">{edu.degree}</p>
-                <div className="flex items-center gap-3 mt-2 text-zinc-500 text-sm">
+                <div className="flex items-center gap-3 mt-2 text-muted text-sm">
                   <span>{edu.period}</span>
                   {edu.gpa && <span>&middot; GPA: {edu.gpa}</span>}
                 </div>
@@ -250,7 +250,7 @@ export default async function AboutPage() {
         {/* CTA */}
         <section className="glass-card p-8 text-center">
           <h2 className="text-2xl font-bold mb-2">Let&apos;s Connect</h2>
-          <p className="text-zinc-400 mb-6">Interested in collaborating or just want to chat? Feel free to reach out.</p>
+          <p className="text-secondary mb-6">Interested in collaborating or just want to chat? Feel free to reach out.</p>
           <div className="flex items-center justify-center gap-4">
             <a href={`mailto:${portfolio.email}`} className="btn-primary">
               <Mail className="w-4 h-4" /> Get in Touch

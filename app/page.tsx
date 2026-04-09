@@ -36,7 +36,7 @@ export default async function HomePage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-2">Welcome to prabal.dev</h1>
-          <p className="text-zinc-400">Run <code className="text-brand-400">npm run seed</code> to initialize your portfolio data.</p>
+          <p className="text-secondary">Run <code className="text-brand-400">npm run seed</code> to initialize your portfolio data.</p>
         </div>
       </div>
     );
@@ -70,15 +70,15 @@ export default async function HomePage() {
           </div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
-            <span className="block text-white">Hi, I&apos;m</span>
+            <span className="block text-primary">Hi, I&apos;m</span>
             <span className="block gradient-text">{portfolio.name}</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto mb-4 font-light">
+          <p className="text-xl md:text-2xl text-secondary max-w-3xl mx-auto mb-4 font-light">
             {portfolio.title}
           </p>
 
-          <p className="text-base md:text-lg text-zinc-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-base md:text-lg text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
             {portfolio.tagline}
           </p>
 
@@ -95,25 +95,25 @@ export default async function HomePage() {
           <div className="flex items-center justify-center gap-3">
             {portfolio.socialLinks?.github && (
               <a href={portfolio.socialLinks.github} target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.12] transition-all">
+                className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-secondary hover:text-primary hover:bg-white/[0.08] hover:border-white/[0.12] transition-all">
                 <Github className="w-5 h-5" />
               </a>
             )}
             {portfolio.socialLinks?.linkedin && (
               <a href={portfolio.socialLinks.linkedin} target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.12] transition-all">
+                className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-secondary hover:text-primary hover:bg-white/[0.08] hover:border-white/[0.12] transition-all">
                 <Linkedin className="w-5 h-5" />
               </a>
             )}
             <a href={`mailto:${portfolio.email}`}
-              className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.12] transition-all">
+              className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-secondary hover:text-primary hover:bg-white/[0.08] hover:border-white/[0.12] transition-all">
               <Mail className="w-5 h-5" />
             </a>
           </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-600">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted">
           <span className="text-xs uppercase tracking-widest">Scroll</span>
           <div className="w-5 h-8 rounded-full border border-zinc-700 flex justify-center pt-1.5">
             <div className="w-1 h-2 bg-zinc-500 rounded-full animate-bounce" />
@@ -136,13 +136,13 @@ export default async function HomePage() {
                 <div key={i} className="glass-card-hover p-6 md:p-8 group">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-white group-hover:text-brand-400 transition-colors">
+                      <h3 className="text-xl font-bold text-primary group-hover:text-brand-400 transition-colors">
                         {exp.role}
                       </h3>
                       <p className="text-brand-400 font-medium">{exp.company}</p>
                     </div>
                     <div className="flex items-center gap-3 mt-2 md:mt-0">
-                      <span className="text-zinc-500 text-sm">{exp.period}</span>
+                      <span className="text-muted text-sm">{exp.period}</span>
                       {exp.current && (
                         <span className="px-2.5 py-0.5 bg-emerald-500/10 text-emerald-400 text-xs font-medium rounded-full border border-emerald-500/20">
                           Current
@@ -150,10 +150,10 @@ export default async function HomePage() {
                       )}
                     </div>
                   </div>
-                  <p className="text-zinc-500 text-sm mb-4">{exp.location}</p>
+                  <p className="text-muted text-sm mb-4">{exp.location}</p>
                   <ul className="space-y-2">
                     {exp.description?.map((item: string, j: number) => (
-                      <li key={j} className="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+                      <li key={j} className="flex items-start gap-3 text-secondary text-sm leading-relaxed">
                         <ChevronRight className="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" />
                         {item}
                       </li>
@@ -214,17 +214,17 @@ export default async function HomePage() {
               {portfolio.projects.map((project: any, i: number) => (
                 <div key={i} className="glass-card-hover p-6 md:p-8 group flex flex-col">
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-bold text-white group-hover:text-brand-400 transition-colors">
+                    <h3 className="text-xl font-bold text-primary group-hover:text-brand-400 transition-colors">
                       {project.title}
                     </h3>
                     {project.githubUrl && (
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
-                        className="text-zinc-500 hover:text-white transition-colors">
+                        className="text-muted hover:text-primary transition-colors">
                         <ExternalLink className="w-4 h-4" />
                       </a>
                     )}
                   </div>
-                  <p className="text-zinc-400 text-sm leading-relaxed mb-4 flex-1">
+                  <p className="text-secondary text-sm leading-relaxed mb-4 flex-1">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -266,19 +266,19 @@ export default async function HomePage() {
                       <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover" />
                     </div>
                   )}
-                  <div className="flex items-center gap-3 text-xs text-zinc-500 mb-3">
+                  <div className="flex items-center gap-3 text-xs text-muted mb-3">
                     <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.readingTime} min read</span>
                     <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{post.views} views</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-white group-hover:text-brand-400 transition-colors mb-2 line-clamp-2">
+                  <h3 className="text-lg font-semibold text-primary group-hover:text-brand-400 transition-colors mb-2 line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed line-clamp-2 flex-1">
+                  <p className="text-muted text-sm leading-relaxed line-clamp-2 flex-1">
                     {post.excerpt}
                   </p>
                   <div className="flex flex-wrap gap-1.5 mt-4">
                     {post.tags?.slice(0, 3).map((tag: string) => (
-                      <span key={tag} className="px-2 py-0.5 bg-white/[0.04] text-zinc-500 text-xs rounded-md">
+                      <span key={tag} className="px-2 py-0.5 bg-white/[0.04] text-muted text-xs rounded-md">
                         {tag}
                       </span>
                     ))}
@@ -304,8 +304,8 @@ export default async function HomePage() {
               {portfolio.achievements.map((ach: any, i: number) => (
                 <div key={i} className="glass-card p-6 group">
                   <div className="text-3xl font-bold text-brand-400 mb-2">{ach.year}</div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{ach.title}</h3>
-                  <p className="text-zinc-500 text-sm">{ach.description}</p>
+                  <h3 className="text-lg font-semibold text-primary mb-2">{ach.title}</h3>
+                  <p className="text-muted text-sm">{ach.description}</p>
                 </div>
               ))}
             </div>
@@ -325,9 +325,9 @@ export default async function HomePage() {
 
             {portfolio.education.map((edu: any, i: number) => (
               <div key={i} className="glass-card p-6 md:p-8">
-                <h3 className="text-xl font-bold text-white">{edu.institution}</h3>
+                <h3 className="text-xl font-bold text-primary">{edu.institution}</h3>
                 <p className="text-brand-400 font-medium mt-1">{edu.degree}</p>
-                <div className="flex items-center gap-4 mt-3 text-sm text-zinc-500">
+                <div className="flex items-center gap-4 mt-3 text-sm text-muted">
                   <span>{edu.period}</span>
                   {edu.gpa && <span>GPA: {edu.gpa}</span>}
                 </div>

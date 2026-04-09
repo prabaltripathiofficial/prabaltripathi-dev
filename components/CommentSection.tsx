@@ -108,7 +108,7 @@ export default function CommentSection({
 
       {/* Comments List */}
       {comments.length === 0 ? (
-        <div className="text-center py-8 text-zinc-500">
+        <div className="text-center py-8 text-muted">
           <MessageSquare className="w-8 h-8 mx-auto mb-2 opacity-30" />
           <p>No comments yet. Be the first to share your thoughts!</p>
         </div>
@@ -121,13 +121,13 @@ export default function CommentSection({
                   <User className="w-4 h-4 text-brand-400" />
                 </div>
                 <div>
-                  <span className="font-medium text-sm text-white">{comment.name}</span>
+                  <span className="font-medium text-sm text-primary">{comment.name}</span>
                   <span className="text-xs text-zinc-600 ml-2">
                     {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}
                   </span>
                 </div>
               </div>
-              <p className="text-zinc-400 text-sm leading-relaxed pl-11">
+              <p className="text-secondary text-sm leading-relaxed pl-11">
                 {comment.content}
               </p>
             </div>
