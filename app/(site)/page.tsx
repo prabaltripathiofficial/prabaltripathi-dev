@@ -13,7 +13,8 @@ export default function About() {
             <a target="_blank" rel="noopener noreferrer" href="https://keploy.io">
               Keploy
             </a>
-            , building developer tooling for testing. I also mentor for{" "}
+            , building developer tooling for testing — and on the side I help
+            mentor a project through{" "}
             <a
               target="_blank"
               rel="noopener noreferrer"
