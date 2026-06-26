@@ -11,7 +11,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         <h1 className="mb-20 nimbus uppercase tracking-wide mt-[9px] hidden md:block text-base">
           <a href="/">{NAME}</a>
         </h1>
-        <div className="flex-auto">{children}</div>
+        {/* min-height keeps the footer from riding up above its About-page
+            position on short pages; longer content pushes it down naturally. */}
+        <div className="flex-auto min-h-[58vh]">{children}</div>
         <Footer />
       </main>
     </div>

@@ -13,10 +13,18 @@ export default function About() {
             <a target="_blank" rel="noopener noreferrer" href="https://keploy.io">
               Keploy
             </a>
-            , working on developer tooling for testing. But most of what I build
-            starts as a late-night &ldquo;what if&rdquo; and just keeps going until
-            it works. Some of it ships, some of it doesn&apos;t — either way I write
-            the interesting parts down here.
+            , working on developer tooling for testing, and I mentored at{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://drive.google.com/file/d/1Di5qdSvBJAlhjDBUr7H7AQ6W_O9oLkdO/view?usp=sharing"
+            >
+              GSoC &rsquo;25
+            </a>
+            . But most of what I build starts as a late-night &ldquo;what
+            if&rdquo; and just keeps going until it works — some of it ships, some
+            of it doesn&apos;t, and either way I write the interesting parts down
+            here.
           </p>
           <p>
             Away from the keyboard I play guitar 🎸 and make videos about whatever

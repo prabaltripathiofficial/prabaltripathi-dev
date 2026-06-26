@@ -11,9 +11,8 @@ export default function Footer() {
       <div className="flex space-x-2">
         <a className={linkClass} target="_blank" rel="noopener noreferrer" href={SOCIALS.email}>
           <span className="sr-only">mail</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className={iconClass}>
-            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={iconClass}>
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
           </svg>
         </a>
         <a className={linkClass} target="_blank" rel="noopener noreferrer" href={SOCIALS.twitter}>
