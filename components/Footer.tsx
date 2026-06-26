@@ -16,6 +16,13 @@ export default function Footer() {
             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
           </svg>
         </a>
+        <a className={linkClass} target="_blank" rel="noopener noreferrer" href={SOCIALS.twitter}>
+          <span className="sr-only">twitter</span>
+          <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={iconClass}>
+            <title>X icon</title>
+            <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+          </svg>
+        </a>
         <a className={linkClass} target="_blank" rel="noopener noreferrer" href={SOCIALS.instagram}>
           <span className="sr-only">instagram</span>
           <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={iconClass}>

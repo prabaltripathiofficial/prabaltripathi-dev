@@ -15,6 +15,7 @@ export const NAV = [
 // Footer social links.
 export const SOCIALS = {
   email: "mailto:prabaltripathiofficial@gmail.com",
+  twitter: "https://x.com/_i_am_pattyy",
   instagram: "https://instagram.com/withprabal",
   github: "https://github.com/prabaltripathiofficial",
   linkedin: "https://www.linkedin.com/in/prabaltripathiofficial/",
