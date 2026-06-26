@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import matter from "gray-matter";
+import { unstable_noStore as noStore } from "next/cache";
 
 // Storage layer with two drivers:
 //   • Postgres (@vercel/postgres) when POSTGRES_URL is set  → production
@@ -60,6 +61,7 @@ async function pg() {
 // Articles
 // --------------------------------------------------------------------------
 export async function getArticles(): Promise<ArticleMeta[]> {
+  noStore(); // never serve a cached list — DB is the source of truth
   if (usePg) {
     const sql = await pg();
     const { rows } = await sql`SELECT slug, title, date, description FROM articles ORDER BY date DESC`;
@@ -82,6 +84,7 @@ export async function getArticles(): Promise<ArticleMeta[]> {
 }
 
 export async function getArticle(slug: string): Promise<Article | null> {
+  noStore();
   if (usePg) {
     const sql = await pg();
     const { rows } = await sql`SELECT slug, title, date, description, content FROM articles WHERE slug = ${slug}`;
@@ -138,6 +141,7 @@ export async function deleteArticle(slug: string): Promise<void> {
 // Daily updates
 // --------------------------------------------------------------------------
 export async function getUpdates(): Promise<Update[]> {
+  noStore(); // never serve a cached list — DB is the source of truth
   if (usePg) {
     const sql = await pg();
     const { rows } = await sql`SELECT id, mood, text, created_at FROM updates ORDER BY created_at DESC`;
