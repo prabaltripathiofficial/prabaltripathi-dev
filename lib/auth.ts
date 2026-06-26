@@ -1,53 +1,56 @@
-import { NextAuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
-import { connectDB } from "./db";
-import User from "./models/User";
+import crypto from "crypto";
+import { cookies } from "next/headers";
 
-export const authOptions: NextAuthOptions = {
-  providers: [
-    CredentialsProvider({
-      name: "credentials",
-      credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
-      },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) return null;
+// Stateless, HMAC-signed session cookie. Only the owner (who knows
+// ADMIN_PASSWORD) can mint one. Works on serverless with no session store.
+const SECRET = process.env.AUTH_SECRET || "dev-insecure-secret-change-me";
+const PASSWORD = process.env.ADMIN_PASSWORD || "prabal"; // override in env
+export const COOKIE = "pt_session";
+const MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 
-        await connectDB();
-        const user = await User.findOne({ email: credentials.email });
-        if (!user) return null;
+export function checkPassword(input: string): boolean {
+  const a = Buffer.from(String(input));
+  const b = Buffer.from(PASSWORD);
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
+}
 
-        const isValid = await bcrypt.compare(credentials.password, user.password);
-        if (!isValid) return null;
+export function createToken(): string {
+  const payload = { role: "owner", exp: Date.now() + MAX_AGE * 1000 };
+  const data = Buffer.from(JSON.stringify(payload)).toString("base64url");
+  const sig = crypto.createHmac("sha256", SECRET).update(data).digest("base64url");
+  return `${data}.${sig}`;
+}
 
-        return {
-          id: user._id.toString(),
-          name: user.name,
-          email: user.email,
-          role: user.role,
-        };
-      },
-    }),
-  ],
-  session: { strategy: "jwt" },
-  pages: { signIn: "/admin/login" },
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.role = (user as any).role;
-        token.id = user.id;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (session.user) {
-        (session.user as any).role = token.role;
-        (session.user as any).id = token.id;
-      }
-      return session;
-    },
-  },
-  secret: process.env.NEXTAUTH_SECRET,
-};
+export function verifyToken(token?: string | null): boolean {
+  if (!token) return false;
+  const [data, sig] = token.split(".");
+  if (!data || !sig) return false;
+  const expected = crypto.createHmac("sha256", SECRET).update(data).digest("base64url");
+  const sb = Buffer.from(sig);
+  const eb = Buffer.from(expected);
+  if (sb.length !== eb.length || !crypto.timingSafeEqual(sb, eb)) return false;
+  try {
+    const p = JSON.parse(Buffer.from(data, "base64url").toString());
+    return !p.exp || Date.now() < p.exp;
+  } catch {
+    return false;
+  }
+}
+
+export function isOwner(): boolean {
+  return verifyToken(cookies().get(COOKIE)?.value);
+}
+
+export function setSessionCookie() {
+  cookies().set(COOKIE, createToken(), {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: MAX_AGE,
+  });
+}
+
+export function clearSessionCookie() {
+  cookies().delete(COOKIE);
+}

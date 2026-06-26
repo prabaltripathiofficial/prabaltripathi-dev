@@ -1,46 +1,31 @@
 import type { Config } from "tailwindcss";
-import plugin from "tailwindcss/plugin";
 
+// Mirrors mitchellh.com: green accent, Inter UI, PT Serif prose,
+// Archivo Expanded (≈ Nimbus Sans Bold Extended) for the name heading.
 const config: Config = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  darkMode: "class",
+  darkMode: "media", // follow system preference, like the reference site
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
-        serif: ["'Source Serif 4'", "Georgia", "serif"],
-        mono: ["JetBrains Mono", "Fira Code", "monospace"],
-      },
       colors: {
-        brand: {
-          50: "#eef2ff",
-          100: "#e0e7ff",
-          200: "#c7d2fe",
-          300: "#a5b4fc",
-          400: "#818cf8",
-          500: "#6366f1",
-          600: "#4f46e5",
-          700: "#4338ca",
-          800: "#3730a3",
-          900: "#312e81",
-          950: "#1e1b4b",
+        primary: {
+          400: "#4ade80",
+          500: "#22c55e",
+          600: "#16a34a",
+        },
+        secondary: {
+          400: "#4ade80",
+          500: "#22c55e",
         },
       },
-      animation: {
-        float: "float 6s ease-in-out infinite",
-      },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-20px)" },
-        },
+      fontFamily: {
+        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["var(--font-pt-serif)", "ui-serif", "Georgia", "serif"],
+        nimbus: ["var(--font-nimbus)", "var(--font-inter)", "sans-serif"],
       },
     },
   },
   plugins: [],
 };
+
 export default config;

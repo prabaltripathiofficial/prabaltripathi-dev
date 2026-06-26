@@ -1,0 +1,14 @@
+[
+  {
+    "id": "seed-1",
+    "mood": "locked-in",
+    "text": "Rebuilt my whole site today. Stripped it down to something clean and fast — feels good to have a place that's just mine again.",
+    "createdAt": "2026-06-27T03:10:00.000Z"
+  },
+  {
+    "id": "seed-2",
+    "mood": "caffeinated",
+    "text": "Third coffee, wiring up the daily updates section. Small thing, but I've wanted a low-pressure place to think out loud for a while.",
+    "createdAt": "2026-06-26T18:40:00.000Z"
+  }
+]
